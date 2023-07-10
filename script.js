@@ -19,7 +19,7 @@ function addTodo() {
   const todoText = document.querySelector("#myInput").value;
 
   if (todoText == "") {
-    alert("You did not enter any item");
+    alert("Vous n'avez entré aucun élément");
   } else {
     const todoObject = {
       id: todoList.length,
