@@ -1,11 +1,13 @@
 // TO-DO !
 
-const todoList = [];
+//On récupère les données du todoList depuis le stockage interne
+
+const todoList = localStorage.getItem('todoList') ?
+                 JSON.parse(localStorage.getItem('todoList')) : []
 
 const todoListElement = document.querySelector("#myUL");
-//On récupère les données du todoList depuis le stockage interne
-let ToDo = JSON.parse(localStorage.getItem('todoList'))
 
+todoListElement.innerHTML = localStorage.getItem('todoList');
 
 document.querySelector("#add_button").addEventListener("click", addTodo);
 document.querySelector("#myInput").addEventListener("keydown", function(e) {
@@ -13,6 +15,7 @@ document.querySelector("#myInput").addEventListener("keydown", function(e) {
     addTodo()
   }
 });
+displayTodos();
 
 //-------Obtenir des valeur de l'input à un tableau d'objet-------
 function addTodo() {
@@ -31,8 +34,6 @@ function addTodo() {
     //--Pour que le noveau article affiche en haut
     todoList.unshift(todoObject);
     displayTodos();
-    localStorage.setItem("todoList", JSON.stringify(todoList));
-
   }
 }
 
